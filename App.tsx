@@ -2,14 +2,12 @@ import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import theme from './src/styles/theme';
-import Ola from './src/components/Ola/Ola';
+import StackComponent from './src/routes/stack';
 
 export default function App() {
 
   return (
-    <View style={styles.container}>
-      <Ola nomeProps='H1'/>      
-    </View> 
+   <StackComponent />
   );
 }
 
