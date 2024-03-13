@@ -1,24 +1,45 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { Text, TextInput, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, TextInput, View, StyleSheet, TouchableOpacity , Alert} from 'react-native';
 import { StackTypes } from '../../routes/stack';
+import UserService   from '../../services/UserService/UserService';
 
 const Login = () => {
     const [login, setLogin] = useState<string>('');
-    const [password, setPassword] = useState<String>('');
-  
+    const [password, setPassword] = useState<string>('');
+    const [usernameError, setUsernameError] = useState(false);
+
+    const userService = new UserService();
+    
     const navigation = useNavigation<StackTypes>();
 
-    const handleLogin = () => {
-      navigation.navigate('Home');
+    const handleLogin = async () => {
 
+      if (!login) {
+        setUsernameError(true);
+        return;
+      } else {
+        setUsernameError(false);
+      }
+
+      const isValid = await userService.validateUser(login, password);
+      alert(isValid);
+      if (isValid) {
+        alert('Usuário autenticado com sucesso'); 
+        //Alert.alert('Sucesso', 'Usuário autenticado com sucesso');
+        setLogin('');
+        setPassword('');
+      } else {
+        alert('Usuário e/ou senha inválidos');
+        //Alert.alert('Erro', 'Usuário e/ou senha inválidos');
+      }
     };
   
     return (
       <View style={styles.container}>
         <Text style={styles.title}>Login</Text>
         <TextInput
-          style={styles.input}
+          style={[styles.input, usernameError && styles.errorInput]} // Aplicar estilo de erro se usernameError for true
           placeholder="Login"
           onChangeText={setLogin}
           value={login}
@@ -28,7 +49,7 @@ const Login = () => {
           placeholder="Password"
           secureTextEntry={true}
           onChangeText={setPassword}
-          value={password as string}
+          value={password}
         />
          <TouchableOpacity onPress={handleLogin} style={styles.button} activeOpacity={0.1}>
         <Text style={styles.buttonText}>Entrar</Text>
@@ -56,6 +77,9 @@ const Login = () => {
       borderRadius: 8,
       marginBottom: 20,
       paddingHorizontal: 10,
+    },
+    errorInput: {
+      borderColor: 'red', // Alterar a cor da borda para vermelho se houver erro
     },
     button: {
         width: '80%',
