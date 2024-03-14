@@ -51,7 +51,7 @@ const Login = () => {
           onChangeText={setPassword}
           value={password}
         />
-         <TouchableOpacity onPress={handleLogin} style={styles.button} activeOpacity={0.1}>
+         <TouchableOpacity onPress={()=> navigation.navigate('Home')} style={styles.button} activeOpacity={0.1}>
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
       </View>
