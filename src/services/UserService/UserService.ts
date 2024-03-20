@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { User } from '../../types/types';
 
-const BASE_URL = 'http://localhost:3000/User/';
+const BASE_URL = 'https://localhost:7217/api/User/'//'http://localhost:3000/User/';
 
 class UserService {
 
@@ -9,10 +9,28 @@ class UserService {
         // Se necessário, adicione inicializações aqui
       }
 
-      async addUser(user: User): Promise<boolean> {
+  async addUser(user: User): Promise<boolean> {
     try {
-      const response = await axios.post(`${BASE_URL}`, user);
-      return response.status === 201; // Retorna true se o usuário foi adicionado com sucesso
+    //  const response = await axios.post(`${BASE_URL}`, user);
+    
+    const formData = new FormData();
+    formData.append('username', user.username);
+    formData.append('password', user.password);
+
+    const responsePhoto = await fetch(user.photo);
+
+    const blob = await responsePhoto.blob();
+
+    formData.append('photo', blob, 'photo.jpg');
+
+    const uploadResponse = await axios.post(BASE_URL+'addUser', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        },
+    });
+    
+      return uploadResponse.status === 201; // Retorna true se o usuário foi adicionado com sucesso
+    
     } catch (error) {
       console.error('Erro ao adicionar usuário:', error);
       return false; // Retorna false em caso de erro

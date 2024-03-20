@@ -3,12 +3,14 @@
     {
       "id": 1,
       "username": "h1",
-      "password": "123"
+      "password": "123",
+      "photo"   : "teste.png"
     },
     {
       "id": 2,
       "username": "h2",
-      "password": "456"
+      "password": "456",
+      "photo"   : "teste.png"
     }
  ]
 }
