@@ -8,13 +8,14 @@ const Login = () => {
     const [login, setLogin] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [usernameError, setUsernameError] = useState(false);
-
+  
     const userService = new UserService();
     
     const navigation = useNavigation<StackTypes>();
 
     const handleLogin = async () => {
-
+      const userId = 1;
+      
       if (!login) {
         setUsernameError(true);
         return;
@@ -29,6 +30,8 @@ const Login = () => {
         //Alert.alert('Sucesso', 'Usuário autenticado com sucesso');
         setLogin('');
         setPassword('');
+        navigation.navigate('Details', {  userId });
+
       } else {
         alert('Usuário e/ou senha inválidos');
         //Alert.alert('Erro', 'Usuário e/ou senha inválidos');
@@ -51,7 +54,7 @@ const Login = () => {
           onChangeText={setPassword}
           value={password}
         />
-         <TouchableOpacity onPress={()=> navigation.navigate('Home')} style={styles.button} activeOpacity={0.1}>
+         <TouchableOpacity onPress={handleLogin} activeOpacity={0.1} style={styles.button}>
         <Text style={styles.buttonText}>Entrar</Text>
       </TouchableOpacity>
       </View>

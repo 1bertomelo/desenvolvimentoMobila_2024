@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { User } from '../../types/types';
 
-const BASE_URL = 'https://localhost:7217/api/User/'//'http://localhost:3000/User/';
+const BASE_URL = 'http://localhost:3000/User/';//'https://localhost:7217/api/User/'
 
 class UserService {
 
@@ -51,6 +51,18 @@ class UserService {
       return false; // Retorna false em caso de erro
     }
   }
+
+  async getUserById(userId: number): Promise<User | null> {
+    try {
+        const response: AxiosResponse<User> = await axios.get(`${BASE_URL}${userId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Erro ao buscar usuário pelo ID:', error);
+        return null;
+    }
+}
+
+
 }
 
 export default  UserService;
