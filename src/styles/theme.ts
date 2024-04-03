@@ -7,7 +7,7 @@ export default {
     red: '#e83f5b',
     orange: '#fd951f',
     yellow: '#f7df1e',
-    blue:'blue',
+    blue:'#007bff',
     primary: '#8257e6',
     primaryHover: '#9466ff',
     secondary: '#e1e1e6',
