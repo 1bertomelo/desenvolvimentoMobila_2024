@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { ButtonApp, Title } from './style';
+import { Button, Touchable } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
 interface Props {

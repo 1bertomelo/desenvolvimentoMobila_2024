@@ -5,6 +5,8 @@ import { StackTypes } from '../../routes/stack';
 import * as ImagePicker from 'expo-image-picker';
 import UserService   from '../../services/UserService/UserService';
 import {User} from '../../types/types'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import CustomButton from '../../components/Button';
 
 const Home = () => {
     const [image, setImage] = useState('');
@@ -13,7 +15,7 @@ const Home = () => {
     const pickImage = async () => {
       // No permissions request is necessary for launching the image library
       let result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.All,
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
         allowsEditing: true,
         aspect: [4, 3],
         quality: 1,
@@ -59,11 +61,13 @@ return (
       onChangeText={text => setName(text)}
       value={name}
   />
-  <Button title="Pick an image from camera roll" onPress={pickImage} />
+  <CustomButton title='Selecionar Imagem' onPress={pickImage}></CustomButton>
+  
   {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 , marginBottom: 10}} />}
-  <Button title="Upload" onPress={handleUpload} />
+  
+  <CustomButton title='Upload' onPress={handleUpload}></CustomButton>
 </View>
-       
+        
    
 
 );

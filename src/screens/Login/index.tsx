@@ -18,6 +18,7 @@ const Login = () => {
 
     const handleLogin = async () => {
       const userId = 1;
+      navigation.navigate('Home');
       alert(login);
       if (!login) {
         setUsernameError(true);
@@ -44,7 +45,7 @@ const Login = () => {
     return (
       <ContainerLogin>
         <InputLogin  
-          placeholder="Login"
+          placeholder="Loginx"
           onChangeText={setLogin}
           value={login}
         />
@@ -55,6 +56,7 @@ const Login = () => {
           value={password}
         />
         <CustomButton title='Entrar' onPress={handleLogin}></CustomButton>
+        
       </ContainerLogin>
     );
   };
