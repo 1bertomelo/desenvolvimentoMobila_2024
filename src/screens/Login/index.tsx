@@ -18,8 +18,6 @@ const Login = () => {
 
     const handleLogin = async () => {
       const userId = 1;
-      navigation.navigate('Home');
-      alert(login);
       if (!login) {
         setUsernameError(true);
         return;
@@ -28,14 +26,10 @@ const Login = () => {
       }
 
       const isValid = await userService.validateUser(login, password);
-      alert(isValid);
       if (isValid) {
-        alert('Usuário autenticado com sucesso'); 
-        //Alert.alert('Sucesso', 'Usuário autenticado com sucesso');
         setLogin('');
         setPassword('');
-        navigation.navigate('Details', {  userId });
-
+        navigation.navigate('Home2');
       } else {
         alert('Usuário e/ou senha inválidos');
         //Alert.alert('Erro', 'Usuário e/ou senha inválidos');

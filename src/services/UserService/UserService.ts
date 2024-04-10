@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from 'axios';
 import { User } from '../../types/types';
 
-const BASE_URL = 'http://localhost:3000/User/';//'https://localhost:7217/api/User/'
+const BASE_URL = 'http://localhost:3000/User';//'https://localhost:7217/api/User/'
 
 class UserService {
 
@@ -52,16 +52,28 @@ class UserService {
     }
   }
 
-  async getUserById(userId: number): Promise<User | null> {
+  async getUserById(userId: number): Promise<User> {
     try {
-        const response: AxiosResponse<User> = await axios.get(`${BASE_URL}${userId}`);
+        const response: AxiosResponse<User> = await axios.get(`${BASE_URL}?id=${userId}`);             
         return response.data;
+    } catch (error) {
+        console.error('Erro ao buscar usuário pelo ID:', error);
+        return { id: 0, username: '', password: '' } ;
+    }
+
+}
+
+  async getAllUsers(): Promise<User[] | null> {
+    try {
+      const response: AxiosResponse<User[]> = await axios.get(`${BASE_URL}`);
+      return response.data;
+      
     } catch (error) {
         console.error('Erro ao buscar usuário pelo ID:', error);
         return null;
     }
-}
 
+  }
 
 }
 

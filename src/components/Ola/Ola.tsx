@@ -17,7 +17,7 @@ const Ola : React.FC<OlaProps> = ({nomeProps}) => {
             Olá {nomeProps}
             seu total de é Likes {contadorLikes}
             </Text>
-
+      
         <Button
           title="Like"         
           onPress={incrementarContador}

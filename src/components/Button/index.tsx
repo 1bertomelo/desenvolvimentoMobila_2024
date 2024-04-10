@@ -12,7 +12,7 @@ interface Props {
 
 const CustomButton = ({title, onPress , ...rest} : Props) => {
 
-    return (
+    return (    
     <ButtonApp {...rest} onPress={onPress}>
         <Title>{title}</Title>
     </ButtonApp>
