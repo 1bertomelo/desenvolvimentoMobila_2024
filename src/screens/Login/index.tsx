@@ -18,6 +18,7 @@ const Login = () => {
 
     const handleLogin = async () => {
       const userId = 1;
+      //navigation.navigate('ExemploEskeleton');
       if (!login) {
         setUsernameError(true);
         return;
@@ -25,15 +26,16 @@ const Login = () => {
         setUsernameError(false);
       }
 
-      const isValid = await userService.validateUser(login, password);
+     /* const isValid = await userService.validateUser(login, password);
       if (isValid) {
         setLogin('');
         setPassword('');
-        navigation.navigate('Home2');
+        navigation.navigate('ExemploEskeleton');
       } else {
         alert('Usuário e/ou senha inválidos');
         //Alert.alert('Erro', 'Usuário e/ou senha inválidos');
-      }
+      }*/
+      navigation.navigate('ExemploEskeleton');
     };
   
     return (
