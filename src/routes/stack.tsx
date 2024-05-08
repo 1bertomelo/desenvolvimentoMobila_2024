@@ -7,6 +7,8 @@ import Login from '../screens/Login';
 import Details from '../screens/Details';
 import ExemploEskeleton from '../screens/ExemploEskeleton';
 import { RouteProp } from '@react-navigation/native';
+import ExemploData from '../screens/exemploData';
+import ExemploMonetario from '../screens/exemploMonetario';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,6 +18,8 @@ type StackNavigation = {
     Login : undefined;
     Details: { userId : number | undefined};
     ExemploEskeleton: undefined;
+    ExemploData: undefined;
+    ExemploMonetario: undefined;
 }
 
 export type RootStackParamList = {
@@ -24,6 +28,8 @@ export type RootStackParamList = {
     Login: undefined;
     Details: { userId: number};
     ExemploEskeleton: undefined;
+    ExemploData: undefined;
+    ExemploMonetario: undefined;
 
 };
 
@@ -41,6 +47,8 @@ export default function StackComponent(){
                 <Stack.Screen  name="Home2" component={Home2} />
                 <Stack.Screen  name="Details" component={Details}   />
                 <Stack.Screen  name="ExemploEskeleton" component={ExemploEskeleton}   />
+                <Stack.Screen  name="ExemploData" component={ExemploData}   />
+                <Stack.Screen  name="ExemploMonetario" component={ExemploMonetario}   />
             </Stack.Navigator>
         </NavigationContainer>
 

@@ -35,7 +35,7 @@ const Login = () => {
         alert('Usuário e/ou senha inválidos');
         //Alert.alert('Erro', 'Usuário e/ou senha inválidos');
       }*/
-      navigation.navigate('ExemploEskeleton');
+      navigation.navigate('ExemploData');
     };
   
     return (

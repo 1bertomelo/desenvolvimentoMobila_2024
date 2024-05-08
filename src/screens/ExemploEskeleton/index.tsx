@@ -16,7 +16,7 @@ const SkeletonExemplo = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // 2000 milissegundos (2 segundos)
+    }, 10000); // 2000 milissegundos (2 segundos)
     return () => clearTimeout(timer);
   }, []);
 
@@ -30,7 +30,7 @@ const SkeletonExemplo = () => {
   
       {/* Coloque aqui o layout do esqueleto */}
       <Circle cx="36" cy="36" r="36" />      
-      <Rect x="80" y="10" rx="4" ry="4" width={200} height={14} />
+      <Rect x="80" y="10" rx="4" ry="4" width={100} height={14} />
       <Rect x="80" y="30" rx="4" ry="4" width={200} height={14} />
       <Rect x="80" y="50" rx="4" ry="4" width={200} height={14} />
       {/* Um exemplo de esqueleto de carregamento */}
@@ -40,7 +40,7 @@ const SkeletonExemplo = () => {
   // Se ainda estiver carregando, exiba o esqueleto
   if (loading) {
     return <View style={styles.container}> {renderSkeleton()} </View> ;
-   // return <Loading />
+    //return <Loading />
   }
 
   // Caso contrário, renderize o conteúdo real
@@ -68,7 +68,6 @@ const styles = StyleSheet.create({
     paddingTop:10
   },
   header:{
-    
     flexDirection:"row",
     alignItems:"center",
     paddingLeft: 60,
@@ -80,12 +79,6 @@ const styles = StyleSheet.create({
     width: 200,
     height: 20,
     backgroundColor: '#dcdcdc',
-    marginBottom: 10,
-  },
-  contentItem: {
-    width: 200,
-    height: 20,
-    backgroundColor: '#f0f0f0',
     marginBottom: 10,
   },
   avatar:{
