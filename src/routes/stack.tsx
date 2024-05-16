@@ -9,10 +9,12 @@ import ExemploEskeleton from '../screens/ExemploEskeleton';
 import { RouteProp } from '@react-navigation/native';
 import ExemploData from '../screens/exemploData';
 import ExemploMonetario from '../screens/exemploMonetario';
+import Splash from '../screens/Splash';
 
 const Stack = createNativeStackNavigator();
 
 type StackNavigation = {
+    Splash : undefined;
     Home : undefined;
     Home2 : undefined;
     Login : undefined;
@@ -23,6 +25,7 @@ type StackNavigation = {
 }
 
 export type RootStackParamList = {
+    Splash : undefined;
     Home: undefined;
     Home2: undefined;
     Login: undefined;
@@ -42,6 +45,7 @@ export default function StackComponent(){
     return (
         <NavigationContainer>
             <Stack.Navigator>
+                <Stack.Screen  name="Splash" component={Splash}   options={{headerShown: false }}  />
                 <Stack.Screen  name="Login" component={Login}   options={{headerShown: false }}  />
                 <Stack.Screen  name="Home" component={Home} />
                 <Stack.Screen  name="Home2" component={Home2} />
