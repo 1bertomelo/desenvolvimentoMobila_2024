@@ -6,6 +6,7 @@ import CustomButton from '../../components/Button';
 import { InputLogin } from '../../components/InputLogin/style';
 import PassWordInput from '../../components/Password';
 import { ContainerLogin } from './style';
+import { useAuth } from '../../provider/AuthProvider';  // Atualize o caminho conforme necessário
 
 const Login = () => {
     const [login, setLogin] = useState<string>('');
@@ -14,6 +15,8 @@ const Login = () => {
   
     const userService = new UserService();
     
+    const { setUser } = useAuth();
+
     const navigation = useNavigation<StackTypes>();
 
     const handleLogin = async () => {
@@ -35,7 +38,8 @@ const Login = () => {
         alert('Usuário e/ou senha inválidos');
         //Alert.alert('Erro', 'Usuário e/ou senha inválidos');
       }*/
-      navigation.navigate('ExemploData');
+      setUser(login);  // Armazenar o nome do usuário no contexto
+      navigation.navigate('Home3');
     };
   
     return (
